@@ -1,0 +1,46 @@
+name: Restsaurant  Api dev
+
+on: 
+   push:
+      branches: [master]
+   pull_request:
+      branches: [master]
+   workflow_dispatch:
+
+jobs:
+   build:
+     runs-on:
+        - ubuntu-latest
+     steps:
+        - name: Checkout
+          uses: actions/checkout@v6.0.3
+
+        - name:   Setup .NET Core SDK
+          uses: actions/setup-dotnet@v5.3.0
+          with:
+               dotnet-version: '6.0.2xx'
+        - name: Restore Packege
+          run : dotnet restore
+
+        - name:  build 
+          run: dotnet build --no-restore
+
+        - name: test
+          run: dotnet test
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
