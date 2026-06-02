@@ -6,6 +6,7 @@ using Restaurants.Infrastructure.Extensions;
 using Restaurants.Infrastructure.Seeders;
 using Serilog;
 
+try{
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -55,4 +56,11 @@ app.MapControllers();
 
 
 app.Run();
+}
+catch(Exception ex){
+    log.Fital("Application Startup Failed");
+}
+finally(){
+    log.CloseAndFlash();
+}
 public partial class Program { }
